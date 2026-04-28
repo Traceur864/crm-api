@@ -13,7 +13,10 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   app.enableCors({
-    origin: ['http://localhost:3000', 'https://crm-app-eta-green.vercel.app'],
+    origin: [
+      'http://localhost:3000',
+      'https://crm-app-eta-green.vercel.app/api',
+    ],
     credentials: true,
   });
 
