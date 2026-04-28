@@ -13,7 +13,7 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   app.enableCors({
-    origin: 'http://localhost:3005',
+    origin: 'http://localhost:3001',
     credentials: true,
   });
 
