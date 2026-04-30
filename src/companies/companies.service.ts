@@ -27,7 +27,7 @@ export class CompaniesService {
     return company;
   }
 
-  async update(id: number, dto: UpdateCompanyDto) {
+  async update(id: number, dto: Partial<UpdateCompanyDto>) {
     await this.findOne(id);
     await this.companiesRepo.update(id, dto);
     return this.findOne(id);
@@ -35,7 +35,12 @@ export class CompaniesService {
 
   async remove(id: number) {
     await this.findOne(id);
-    await this.companiesRepo.delete(id);
-    return { message: `Empresa #${id} eliminada` };
+    await this.companiesRepo.softDelete(id);
+    return { message: `Empresa #${id} desactivada` };
+  }
+
+  async restore(id: number) {
+    await this.companiesRepo.restore(id);
+    return { message: `Empresa #${id} restaurada` };
   }
 }

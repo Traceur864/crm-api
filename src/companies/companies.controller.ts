@@ -3,11 +3,11 @@ import {
   Get,
   Post,
   Put,
-  Delete,
   Body,
   Param,
   ParseIntPipe,
   UseGuards,
+  Patch,
 } from '@nestjs/common';
 import { CompaniesService } from './companies.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
@@ -39,8 +39,13 @@ export class CompaniesController {
     return this.companiesService.update(id, dto);
   }
 
-  @Delete(':id')
+  @Patch(':id/desactive')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.companiesService.remove(id);
+  }
+
+  @Patch(':id/restore')
+  restore(@Param('id', ParseIntPipe) id: number) {
+    return this.companiesService.restore(id);
   }
 }
