@@ -46,8 +46,8 @@ export class DealsService {
 
   async remove(id: number) {
     await this.findOne(id);
-    await this.dealsRepo.delete(id);
-    return { message: `Deal #${id} eliminado` };
+    await this.dealsRepo.softDelete(id);
+    return { message: `Deal #${id} desactivado` };
   }
 
   findByStage(stage: DealStage) {
