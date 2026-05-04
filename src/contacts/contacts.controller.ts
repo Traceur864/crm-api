@@ -3,7 +3,7 @@ import {
   Get,
   Post,
   Put,
-  Delete,
+  Patch,
   Body,
   Param,
   ParseIntPipe,
@@ -39,8 +39,13 @@ export class ContactsController {
     return this.contactsService.update(id, dto);
   }
 
-  @Delete(':id')
+  @Patch(':id/desactive')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.contactsService.remove(id);
+  }
+
+  @Patch(':id/restore')
+  restore(@Param('id', ParseIntPipe) id: number) {
+    return this.contactsService.restore(id);
   }
 }

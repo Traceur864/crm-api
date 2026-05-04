@@ -3,7 +3,7 @@ import {
   Get,
   Post,
   Put,
-  Delete,
+  Patch,
   Body,
   Param,
   ParseIntPipe,
@@ -52,8 +52,13 @@ export class ActivitiesController {
     return this.activitiesService.update(id, dto);
   }
 
-  @Delete(':id')
+  @Patch(':id/desactive')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.activitiesService.remove(id);
+  }
+
+  @Patch(':id/restore')
+  restore(@Param('id', ParseIntPipe) id: number) {
+    return this.activitiesService.restore(id);
   }
 }

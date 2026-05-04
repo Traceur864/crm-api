@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Deal } from '../../deals/entities/deal.entity';
 import { Contact } from '../../contacts/entities/contact.entity';
@@ -58,4 +59,7 @@ export class Activity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

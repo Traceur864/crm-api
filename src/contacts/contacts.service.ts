@@ -40,7 +40,13 @@ export class ContactsService {
 
   async remove(id: number) {
     await this.findOne(id);
-    await this.contactsRepo.delete(id);
-    return { message: `Contacto #${id} eliminado` };
+    await this.contactsRepo.softDelete(id);
+    return { message: `Contacto #${id} desactivado` };
+  }
+
+  async restore(id: number) {
+    await this.findOne(id);
+    await this.contactsRepo.restore(id);
+    return { message: `Contacto #${id} restaurado` };
   }
 }

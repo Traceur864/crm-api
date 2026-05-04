@@ -56,4 +56,10 @@ export class DealsService {
       relations: ['contact', 'assignedTo'],
     });
   }
+
+  async restore(id: number) {
+    await this.findOne(id);
+    await this.dealsRepo.restore(id);
+    return { message: `Deal #${id} restaurado` };
+  }
 }

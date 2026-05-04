@@ -3,7 +3,6 @@ import {
   Get,
   Post,
   Put,
-  Delete,
   Body,
   Param,
   ParseIntPipe,
@@ -54,8 +53,13 @@ export class DealsController {
     return this.dealsService.updateStage(id, stage);
   }
 
-  @Delete(':id')
+  @Patch(':id/desactive')
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.dealsService.remove(id);
+  }
+
+  @Patch(':id/restore')
+  restore(@Param('id', ParseIntPipe) id: number) {
+    return this.dealsService.restore(id);
   }
 }

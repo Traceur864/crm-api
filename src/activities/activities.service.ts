@@ -60,4 +60,10 @@ export class ActivitiesService {
     await this.activitiesRepo.delete(id);
     return { message: `Actividad #${id} eliminada` };
   }
+
+  async restore(id: number) {
+    await this.findOne(id);
+    await this.activitiesRepo.restore(id);
+    return { message: `Actividad #${id} restaurada` };
+  }
 }
