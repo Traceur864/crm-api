@@ -57,7 +57,7 @@ export class ActivitiesService {
 
   async remove(id: number) {
     await this.findOne(id);
-    await this.activitiesRepo.delete(id);
+    await this.activitiesRepo.softDelete(id);
     return { message: `Actividad #${id} eliminada` };
   }
 
